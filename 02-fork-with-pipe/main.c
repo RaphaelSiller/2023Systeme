@@ -3,7 +3,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void main() {
+int main() {
   int result = 0;
   int fildes[2];
   int pid;
@@ -17,16 +17,26 @@ void main() {
   case -1:
     printf("Fehler beim forken");
     return -1;
-    break;
 
-  case 0: //Kind
+  case 0: //Kind schreibt "Hallo Welt"
+    close(fildes[0]); // Schließe unbenutztes Read
+    result = 6-4;
     
-
-    break;
+    write(fildes[1], &result, sizeof result);
+    return 0;
 
   default: //Elternprozess
+    close(fildes[1]); //Schließe unbenutztes Write
+    result=3+1;
+    int resultFromChild;
+    wait(NULL);
     
+    read(fildes[0], &resultFromChild, sizeof resultFromChild);
 
-    break;
+    printf("Ergebnis von x = (3 + 1) * (6 – 4) = %i\n", (result * resultFromChild));
+    printf("Ergebnis von Kind (6 - 4) war %i\n", resultFromChild);
+    printf("Ergebnis von Elt. (3 + 1) war %i\n", result);
+
+    return 0;
   }
 }
