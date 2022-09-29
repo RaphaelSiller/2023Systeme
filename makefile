@@ -5,3 +5,4 @@ clearCompiledFiles:
 	-rm ./03-threads/main
 	-rm ./04-threads-zaehlen-abwaerts/main
 	-rm ./05-threads-berechnen/main
+	-rm ./06-timer-signal/main
