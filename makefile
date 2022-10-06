@@ -1,17 +1,17 @@
 clearCompiledFiles: 
-	-rm ./00-fork/main ./00-fork_
+	-rm ./00-fork/main ./_00-fork
 
-	-rm ./01-fork-with-wait/main ./01-fork-with-wait_
+	-rm ./01-fork-with-wait/main ./_01-fork-with-wait
 
-	-rm ./02-fork-with-pipe/main ./02-fork-with-pipe_
+	-rm ./02-fork-with-pipe/main ./_02-fork-with-pipe
 
-	-rm ./03-threads/main ./03-threads_
+	-rm ./03-threads/main ./_03-threads
 
-	-rm ./04-threads-zaehlen-abwaerts/main ./04-threads-zaehlen-abwaerts_
+	-rm ./04-threads-zaehlen-abwaerts/main ./_04-threads-zaehlen-abwaerts
 
-	-rm ./05-threads-berechnen/main ./05-threads-berechnen_
+	-rm ./05-threads-berechnen/main ./_05-threads-berechnen
 
-	-rm ./06-timer-signal/main ./06-timer-signal_
+	-rm ./06-timer-signal/main ./_06-timer-signal
 
 FORCE:
 
@@ -28,22 +28,22 @@ all:
 	
 
 00-fork: FORCE
-	gcc -o ./00-fork_ ./00-fork/main.c
+	gcc -o ./_00-fork ./00-fork/main.c
 
 01-fork-with-wait: FORCE
-	gcc -o ./01-fork-with-wait_ ./01-fork-with-wait/main.c
+	gcc -o ./_01-fork-with-wait ./01-fork-with-wait/main.c
 
 02-fork-with-pipe: FORCE
-	gcc -o ./02-fork-with-pipe_ ./02-fork-with-pipe/main.c
+	gcc -o ./_02-fork-with-pipe ./02-fork-with-pipe/main.c
 
 03-threads: FORCE
-	gcc -o ./03-threads_ ./03-threads/main.c
+	gcc -o ./_03-threads ./03-threads/main.c
 
 04-threads-zaehlen-abwaerts: FORCE
-	gcc -o ./04-threads-zaehlen-abwaerts_ ./04-threads-zaehlen-abwaerts/main.c
+	gcc -o ./_04-threads-zaehlen-abwaerts ./04-threads-zaehlen-abwaerts/main.c
 
 05-threads-berechnen: FORCE
-	gcc -o ./05-threads-berechnen_ ./05-threads-berechnen/main.c
+	gcc -o ./_05-threads-berechnen ./05-threads-berechnen/main.c
 
 06-timer-signal: FORCE
-	gcc -o ./06-timer-signal_ ./06-timer-signal/main.c
+	gcc -o ./_06-timer-signal ./06-timer-signal/main.c
