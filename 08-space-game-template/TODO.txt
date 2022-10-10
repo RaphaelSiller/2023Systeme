@@ -1,0 +1,9 @@
+Aufgabenstellung:
+Dem Spiel "spaceGame" fehlen wichtige Anweisungen um wieder zu funktionieren.
+Schaue dir die Dateien "spaceClient.c" und "spaceServer.c" an und ergänze die
+fehlenden Zeilen Code anhand der Kommentare und der gelernten Theorie. Alle
+restlichen Dateien sind vollständig und sollen unverändert benutzt werden.
+Vergiss nicht die Rückgabewerte der Funktionsaufrufe auf Fehler zu überprüfen,
+wo es notwendig ist. Bei Unverständlichkeiten meldet euch an die Lehrpersonen. 
+
+Matthias Wallnöfer & Markus Telser

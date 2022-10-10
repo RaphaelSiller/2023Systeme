@@ -1,17 +1,17 @@
 clearCompiledFiles: 
-	-rm ./00-fork/main ./_00-fork
+	-rm -f ./00-fork/main ./_00-fork
 
-	-rm ./01-fork-with-wait/main ./_01-fork-with-wait
+	-rm -f ./01-fork-with-wait/main ./_01-fork-with-wait
 
-	-rm ./02-fork-with-pipe/main ./_02-fork-with-pipe
+	-rm -f ./02-fork-with-pipe/main ./_02-fork-with-pipe
 
-	-rm ./03-threads/main ./_03-threads
+	-rm -f ./03-threads/main ./_03-threads
 
-	-rm ./04-threads-zaehlen-abwaerts/main ./_04-threads-zaehlen-abwaerts
+	-rm -f ./04-threads-zaehlen-abwaerts/main ./_04-threads-zaehlen-abwaerts
 
-	-rm ./05-threads-berechnen/main ./_05-threads-berechnen
+	-rm -f ./05-threads-berechnen/main ./_05-threads-berechnen
 
-	-rm ./06-timer-signal/main ./_06-timer-signal
+	-rm -f ./06-timer-signal/main ./_06-timer-signal
 
 FORCE:
 
