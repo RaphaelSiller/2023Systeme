@@ -50,7 +50,7 @@ int main()
 	 */
 	int fd = shm_open(SHARED_MEMORY_NAME, O_CREAT | O_EXCL | O_RDWR, S_IRUSR | S_IWUSR);
 	if(fd < 0) { //Fehler beim erstellen/zugreifen
-		fprintf(stderr, "Fehler beim erstellen zugreifen von shared memory");
+		fprintf(stderr, "Fehler beim erstellen/zugreifen von shared memory");
 		return -1;
 	}
 

@@ -38,7 +38,7 @@ int main()
 	 * Creates or gets the preexisting shared memory area reserved with the name
 	 * "SHARED_MEMORY_NAME" for the space game.
 	 */
-	int fd = shm_open("SHARED_MEMORY_NAME", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+	int fd = shm_open(SHARED_MEMORY_NAME, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
 	if(fd < 0) { //Fehler beim erstellen/zugreifen
 		fprintf(stderr, "Fehler beim erstellen zugreifen von shared memory");
 		return 0;
@@ -51,7 +51,7 @@ int main()
 	
 	/* map SHM object into caller's address space */
 	struct shmbuf *shmp;
-	if ((shmp = mmap(NULL, sizeof(struct shmbuf), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)) == MAP_FAILED) {
+	if ((shmp = mmap(NULL, sizeof(struct shmbuf), PROT_EXEC | PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)) == MAP_FAILED) {
 		fprintf(stderr, "Fehler beim mappen");
 		return -1;
 	}
@@ -147,7 +147,7 @@ int main()
 	}
 	
 	/* delete the mapping for the specified range */
-	if(munmap(shmp, sizeof(struct shmbuf)) == -1) {
+	if(shm_unlink(SHARED_MEMORY_NAME) == -1) {
 		fprintf(stderr, "Fehler beim Unmappen");
 		return -1;
 	}
