@@ -147,7 +147,7 @@ int main()
 	}
 	
 	/* delete the mapping for the specified range */
-	if(shm_unlink(SHARED_MEMORY_NAME) == -1) {
+	if(munmap(shmp, sizeof(struct shmbuf)) == -1) {
 		fprintf(stderr, "Fehler beim Unmappen");
 		return -1;
 	}
