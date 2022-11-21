@@ -107,72 +107,14 @@ void entschluesseln(long msg, long gen, long checksum) {
     perror("Checksum muss kleiner als Generator sein");
     exit(1);
   }
-  // printf("%i\n", polynomial_long_division(msg, gen));
-  if (/*msg % gen == checksum*/  polynomial_long_division(msg-checksum, gen) == 0) {
+  
+  
+
+  if (/*msg % gen == checksum*/  msg % gen == checksum) {
     printf("Checksum wurde richtig errechnet\n");
   } else {
     printf("Checksum wurde falsch errechnet\n");
     printf("msg = %li\ngen = %li\nuebergebene checksum = %li\n", msg, gen, checksum);
-    printf("Checksum sollte %i sein\n", polynomial_long_division(msg-checksum, gen));
+    printf("Checksum sollte %li sein\n", msg % gen);
   }
 }
-
-int polynomial_long_division(int dividend, int divisor) {
-  printf("\tdividend = %i\tdivisor = %i\n", dividend, divisor);
-        // check dividend == 0
-        if(dividend == 0)
-            return 0;
-        
-        // check overflow case
-        if(dividend == INT_MIN && divisor == -1)
-            return INT_MAX;
-        
-        // get abs values of operands, taking care of the overflow case
-        unsigned int dividendAbs = intAbs(dividend);
-        unsigned int divisorAbs = intAbs(divisor);
-
-        // get most significant bit of the operands
-        char dividendAbs_msb = mostSignBit(dividendAbs);
-        char divisorAbs_msb = mostSignBit(divisorAbs);
-
-        int res = 0;
-        // at this point, we basically do long division algorithm
-        // ie the way it is taught in elementary school, but only with
-        // binary nums instead of decimal
-        for(int i = dividendAbs_msb - divisorAbs_msb; i >= 0; i--)
-        {
-            unsigned int divisorAbs_shift = divisorAbs << i; 
-            if(divisorAbs_shift <= dividendAbs)
-            {   
-                dividendAbs -= divisorAbs_shift;
-                res |= 1 << i;
-            }   
-        }
-        
-        // check overflow case
-        if(res == INT_MIN)
-            return INT_MIN;
-        // return result, taking into account the sign of the operands
-        // if one was negative, add - sign to the result, which in terms
-        // of second complement representaion used for negative numbers
-        // simply means - convert result to second complement
-        else
-            return (dividend ^ divisor) < 0 ? ~res + 1 : res;
-    }
-
-    unsigned int intAbs(int num)
-    {
-        if(num == INT_MIN)
-            return (unsigned int)INT_MAX + 1;
-        else
-            return abs(num);   
-    }
-    //
-    char mostSignBit(unsigned int num)
-    {
-        int num_msb = 31;
-        while(!(num & (1 << num_msb)))
-            --num_msb;  
-        
-        return num_msb;
-    }
