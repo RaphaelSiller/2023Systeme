@@ -99,7 +99,12 @@ void verschluesseln(long msg, long gen) {
     perror("generator kann nicht groesser als Nachricht sein");
     exit(1);
   }
-  printf("Checksum = %li\n", msg % gen);
+
+  //Fuege nDigits hinzu, wobei nDigits Anzahl der Ziffern des größtmöglichen Rests ist
+  msg = msg << getNumberOfDigits(gen);
+
+  printf("Checksum = ");
+  fprintf(stdout, "%li", msg % gen);
 }
 
 void entschluesseln(long msg, long gen, long checksum) {
@@ -107,14 +112,25 @@ void entschluesseln(long msg, long gen, long checksum) {
     perror("Checksum muss kleiner als Generator sein");
     exit(1);
   }
-  
-  
 
-  if (/*msg % gen == checksum*/  msg % gen == checksum) {
+  //Füge Rest am Ende der Message hinzu
+  msg = msg << getNumberOfDigits(gen);
+  msg+=(gen-checksum);
+
+  if (msg % gen == 0) {
     printf("Checksum wurde richtig errechnet\n");
   } else {
     printf("Checksum wurde falsch errechnet\n");
     printf("msg = %li\ngen = %li\nuebergebene checksum = %li\n", msg, gen, checksum);
     printf("Checksum sollte %li sein\n", msg % gen);
   }
+}
+
+int getNumberOfDigits(int n) {
+  int ret = 0;
+  while (n > 0) {
+    n/=2;
+    ret++;
+  }
+  return ret;
 }
