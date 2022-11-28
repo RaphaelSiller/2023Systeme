@@ -20,8 +20,6 @@ int main(int argc, char *argv[]) {
     perror("Zu wenig Argumente übergeben\n");
     return -1;
   }
-
-  // printf("argv[1] = %s\n", argv[1]);
   
   // Eingabe Nachricht zu Binary
   long msg = 0, gen = 0, checksum = 0;
@@ -104,7 +102,7 @@ void verschluesseln(long msg, long gen) {
   msg = msg << getNumberOfDigits(gen);
 
   printf("Checksum = ");
-  fprintf(stdout, "%li", msg % gen);
+  fprintf(stderr, "%li", msg % gen);
 }
 
 void entschluesseln(long msg, long gen, long checksum) {
