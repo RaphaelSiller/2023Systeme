@@ -49,13 +49,9 @@ int main(int argc, char *argv[]) {
     perror("Zu wenig Argumente übergeben\n");
     exit(1);
   }
-<<<<<<< HEAD
-  
-=======
 
   // printf("argv[1] = %s\n", argv[1]);
 
->>>>>>> f57b5a2b20e49e84d6f49256e637c324e0ffa18a
   // Eingabe Nachricht zu Binary
   long msg = 0, gen = 0, checksum = 0;
   for (int i = 0; i < strlen(argv[2]); i++) {
