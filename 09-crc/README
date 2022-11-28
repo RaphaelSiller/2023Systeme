@@ -1,0 +1,19 @@
+Name
+	crc - ein Tool für die Simulation der CRC-Verschlüsselung
+
+Description
+	crc kann aus einer Nachricht und einem Generatorpolynom eine checksum generieren, bzw. eine 
+	Nachricht und ein Generatorpolynom mit einer checksum vergleichen und feststellen, ob die checksum
+	richtig ist.
+
+OPTIONS
+	-v verschlüsseln:	Es müssen Nachricht und Generatorpolynom übergeben werden. Es wird die Checksum auf stderr ausgegeben
+
+	-e entschlüsseln:	Es müssen Nachricht, Generatorpolynom und checksum übergeben werden. 
+						Wenn checksum übereinstimmt wird 0, ansonsten die checksum, welche herauskommen sollte, auf stderr ausgegeben
+
+	-h gibt diese Hilfe aus
+
+	-c gibt nur mehr Lösung zurück:
+			-bei Verschlüsseln: checksum
+			-bei Entschlüsseln: bei korrekter Ausgabe 0, ansonsten die checksum, welche herauskommen sollte
